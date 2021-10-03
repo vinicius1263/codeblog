@@ -22,11 +22,11 @@ public class PopucacaoInicialBanco implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Pessoa p1 = new Pessoa("joao");
-        p1.setDataNacimento(LocalDate.of(1990,4,1));
+        p1.setNacimento(LocalDate.of(1990,4,1));
         p1.setEmail("joao@joao");
 
         Pessoa p2 = new Pessoa("maria");
-        p2.setDataNacimento(LocalDate.of(1985,2,19));
+        p2.setNacimento(LocalDate.of(1985,2,19));
         p2.setEmail("maria@maria");
 
         pessoaRepository.save(p1);

@@ -16,6 +16,7 @@
         <thead>
         <tr>
             <td>Nome</td>
+<!--            <td>Data Nascimento</td>-->
             <td>Telefone</td>
             <td>Email</td>
             <td>Acoes</td>
@@ -24,6 +25,7 @@
         <tbody>
         <tr th:each="pessoa : ${listaPessoas}">
             <td th:text="${pessoa.nome}"></td>
+<!--            <td th:text="${pessoa.nacimento}"></td>-->
             <td th:text="${pessoa.telefone}"></td>
             <td th:text="${pessoa.email}"></td>
             <td></td>

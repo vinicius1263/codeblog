@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestão de pessoas</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2">
+    <h2>Editar Pessoa</h2>
+    <form action="#" th:action="@{/rh/pessoas/salvar}" th:object="${pessoa}" method="POST">
+        <input type="hidden" id="id" th:field="*{id}">
+
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></span>
+        <input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
+        <input type="date" th:field="*{nacimento}" placeholder="Data Nascimento" class="form-control mb-4 col-4">
+
+        <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="text-danger"></span>
+        <input type="text" th:field="*{cpf}" placeholder="CPF" class="form-control mb-4 col-4">
+
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+        <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{telefone}" placeholder="Telefone" class="form-control mb-4 col-4">
+
+<!--        <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}" class="text-danger"></span>-->
+<!--        <input id="nomeCidade" type="text" th:field="*{nomeCidade}" placeholder="Cidade" class="form-control mb-4 col-4">-->
+<!--        <input id="idCidade" type="hidden" th:field="*{cidade}" class="form-control mb-4 col-4">-->
+
+<!--        <span th:if="${#fields.hasErrors('departamento')}" th:errors="*{departamento}" class="text-danger"></span>-->
+<!--        <input id="nomeDepartamento" type="text" th:field="*{nomeDepartamento}" placeholder="Departamento" class="form-control mb-4 col-4">-->
+<!--        <input id="idDepartamento" type="hidden" th:field="*{departamento}" class="form-control mb-4 col-4">-->
+
+        <button type="submit" class="btn btn-info col-2">Salvar</button>
+    </form>
+    <hr>
+    <a th:href="@{/rh/pessoas}">Retornar para a lista de pessoas</a>
+</div>
+</body>
+</html>

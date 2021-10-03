@@ -18,8 +18,8 @@ public class Pessoa {
 
     private String nome;
 
-    @DateTimeFormat(style = "yyyy-MM-dd")
-    private LocalDate dataNacimento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate nacimento;
 
     private String cpf;
     private String email;
@@ -50,12 +50,12 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public LocalDate getDataNacimento() {
-        return dataNacimento;
+    public LocalDate getNacimento() {
+        return nacimento;
     }
 
-    public void setDataNacimento(LocalDate dataNacimento) {
-        this.dataNacimento = dataNacimento;
+    public void setNacimento(LocalDate nacimento) {
+        this.nacimento = nacimento;
     }
 
     public String getCpf() {
