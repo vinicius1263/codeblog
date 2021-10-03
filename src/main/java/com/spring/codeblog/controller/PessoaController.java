@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @Controller
 public class PessoaController {
@@ -35,5 +38,33 @@ public class PessoaController {
     public  String salvarPessoa(@ModelAttribute("pessoa") Pessoa pessoa){
      pessoaRepository.save(pessoa);
      return "redirect:/rh/pessoas";
+    }
+
+    @GetMapping("/rh/pessoas/{id}")
+    public String alterarPessoa(@PathVariable("id") Long id, Model model){
+
+        Optional<Pessoa> pessoaOpt = pessoaRepository.findById(id);
+
+        if (pessoaOpt.isPresent()){
+            model.addAttribute("pessoa",pessoaOpt.get());
+        }else {
+            throw new IllegalArgumentException("Pessoa Invalida");
+        }
+
+        return "rh/pessoas/form";
+    }
+
+    @GetMapping("/rh/pessoas/excluir/{id}")
+    public String deletarPessoa(@PathVariable("id") Long id, Model model){
+
+        Optional<Pessoa> pessoaOpt = pessoaRepository.findById(id);
+
+        if (pessoaOpt.isPresent()){
+            pessoaRepository.delete(pessoaOpt.get());
+        }else {
+            throw new IllegalArgumentException("Pessoa Invalida");
+        }
+
+        return "redirect:/rh/pessoas";
     }
 }
